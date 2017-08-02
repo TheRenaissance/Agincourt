@@ -1,4 +1,4 @@
-from base_weap import Weapon
+from .base_weap import Weapon
 
 class Lance(Weapon):
     hit_lines: []

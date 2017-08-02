@@ -1,5 +1,7 @@
+from .weapons.lance import Lance
+
 class Soldier(object):
-    weaps = {}
+    weap_dict: {'lance': Lance()}
 
     def __init__(self, attack,
                        speed,
@@ -14,6 +16,6 @@ class Soldier(object):
         self.vitality=vitality
         self.current_weapon=current_weapon
 
-    def get_current_weapon(self, current_weapon)
-        weap = Soldier.weaps.get(current_weapon)
+    def active_weapon(self):
+        weap = Soldier.weap_dict.get(self.current_weapon)
         return weap

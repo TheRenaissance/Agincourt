@@ -1,7 +1,10 @@
-from base_sol import Soldier
+from .base_sol import Soldier
+from .weapons.lance import Lance
 from random import randint
 
 class Cavalryman(Soldier):
+    weap_dict = {'lance': Lance()}
+
     def __init__(self):
 
         self.attack=randint(5, 10)
@@ -9,6 +12,8 @@ class Cavalryman(Soldier):
         self.weapons=['lance', 'sword', 'crossbow']
         self.defense=randint(1, 3)
         self.vitality=randint(25, 30)
-        self.current_weapon=None
+        self.current_weapon='lance'
 
-    
+    def active_weapon(self, current_weapon):
+        weap = self.weap_dict.get(current_weapon)
+        return weap
