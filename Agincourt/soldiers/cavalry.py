@@ -3,7 +3,9 @@ from .weapons.lance import Lance
 from random import randint
 
 class Cavalryman(Soldier):
-    weap_dict = {'lance': Lance()}
+    weap_dict = {'lance': Lance(),
+                 'sword': Sword(),
+                 'crossbow': Crossbow()}
 
     def __init__(self):
 

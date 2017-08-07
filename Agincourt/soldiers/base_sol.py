@@ -1,7 +1,13 @@
-from .weapons.lance import Lance
+from .weapons import *
 
 class Soldier(object):
-    weap_dict: {'lance': Lance()}
+    weap_dict: {'lance': Lance(),
+                'greatsword': Greatsword(),
+                'sword': Sword(),
+                'axe': Axe(),
+                'morningstar': Morningstar(),
+                'crossbow': Crossbow(),
+                'dagger': Dagger()}
 
     def __init__(self, attack,
                        speed,

@@ -1,6 +1,7 @@
 from textwrap import dedent
 from combat_engine import CombatEngine
 from soldiers.cavalry import Cavalryman
+from soldiers.maa import MAA
 
 class Setup(object):
 
@@ -8,12 +9,18 @@ class Setup(object):
         print(dedent("""
         Choose your soldier:
             1. Cavalryman (Easy)
+            2. Man-at-Arms (Moderate)
         """))
 
-        choice = input('>>> ')
-        if choice == '1':
-            player = Cavalryman()
-            print("You have chose the Cavalryman! Good job!")
+        choice = int(input('>>> '))
+        if choice in range(1, 2):
+            if choice == '1':
+                player = Cavalryman()
+                print("You have chosen the Cavalryman! Good job!")
+            elif choice == '2':
+                player = MAA()
+                print("You have chosen the Man-at-Arms! Good job!")
+
             for attr, value in player.__dict__.items():
                 if isinstance(value, list):
                     print(attr + ':')
