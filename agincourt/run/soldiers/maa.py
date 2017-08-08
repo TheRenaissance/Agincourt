@@ -1,8 +1,14 @@
 from .base_sol import Soldier
 from random import randint, sample
+from .weapons.greatsword import Greatsword
+from .weapons.sword import Sword
+from .weapons.axe import Axe
+from .weapons.morningstar import Morningstar
+from .weapons.crossbow import Crossbow
+from .weapons.dagger import Dagger
 
 class MAA(Soldier):
-    weap_dict: {'greatsword': Greatsword(),
+    weap_dict = {'greatsword': Greatsword(),
                 'sword': Sword(),
                 'axe': Axe(),
                 'morningstar': Morningstar(),
@@ -22,7 +28,7 @@ class MAA(Soldier):
                       maa_weapons[weap_indx[2]]]
         self.defense=randint(6,9)
         self.vitality=randint(20,25)
-        self.current_weapon=[self.weapons[0]]
+        self.current_weapon=self.weapons[0]
 
     def active_weapon(self, current_weapon):
         weap = self.weap_dict.get(current_weapon)

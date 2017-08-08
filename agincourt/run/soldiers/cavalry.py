@@ -1,5 +1,7 @@
 from .base_sol import Soldier
 from .weapons.lance import Lance
+from .weapons.sword import Sword
+from .weapons.crossbow import Crossbow
 from random import randint
 
 class Cavalryman(Soldier):
