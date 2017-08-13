@@ -1,5 +1,6 @@
 from textwrap import dedent
 from run.combat_engine import CombatEngine
+from run.soldiers.base_sol import Soldier
 from run.soldiers.cavalry import Cavalryman
 from run.soldiers.maa import MAA
 
@@ -28,13 +29,10 @@ class Setup(object):
                         print(f'\t{n}')
                 else:
                     print(attr + ': ' + str(value))
-            plyr_wpn = player.active_weapon(player.current_weapon)
-            print(f"Your active weapon is a {player.current_weapon}")
-            for attr, value in plyr_wpn.__dict__.items():
-                print(attr + ': ' + str(value))
 
             opponent = Cavalryman()
-            print("Your opponent is a Cavalryman! Good job!")
+
+            print("Your opponent is a Soldier! Good job!")
             for attr, value in opponent.__dict__.items():
                 if isinstance(value, list):
                     print(attr + ':')
@@ -42,13 +40,9 @@ class Setup(object):
                         print(f'\t{n}')
                 else:
                     print(attr + ': ' + str(value))
-            opp_wpn = opponent.active_weapon(opponent.current_weapon)
-            print(f"Your opponent's weapon is a {opponent.current_weapon}")
-            for attr, value in opp_wpn.__dict__.items():
-                print(attr + ': ' + str(value))
-
+            
             combatter = CombatEngine()
-            combatter.combat(player, opponent, plyr_wpn, opp_wpn)
+            combatter.combat(player, opponent)
 
         else:
             print("Huh?")

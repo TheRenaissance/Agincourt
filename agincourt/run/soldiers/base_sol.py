@@ -1,13 +1,18 @@
 from .weapons import *
 
 class Soldier(object):
-    weap_dict: {'lance': Lance(),
-                'greatsword': Greatsword(),
-                'sword': Sword(),
+    weap_dict = {
                 'axe': Axe(),
-                'morningstar': Morningstar(),
+                'bow': Bow(),
                 'crossbow': Crossbow(),
-                'dagger': Dagger()}
+                'dagger': Dagger(),
+                'greatsword': Greatsword(),
+                'lance': Lance(),
+                'longbow': Longbow(),
+                'morningstar': Morningstar(),
+                'skillet': Skillet(),
+                'sword': Sword()
+                }
 
     def __init__(self, attack,
                        speed,
@@ -20,8 +25,8 @@ class Soldier(object):
         self.weapons=weapons
         self.defense=defense
         self.vitality=vitality
-        self.current_weapon=current_weapon
+        self.current_weapon=weapons[0]
 
-    def active_weapon(self):
-        weap = Soldier.weap_dict.get(self.current_weapon)
+    def active_weapon(self, current_weapon):
+        weap = self.weap_dict.get(current_weapon)
         return weap

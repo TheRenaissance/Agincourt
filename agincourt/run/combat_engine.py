@@ -1,3 +1,5 @@
+# switch_weap can't change the plyr_wpn, except in that round
+
 from .soldiers.weapons import *
 from random import randint
 
@@ -32,13 +34,14 @@ class CombatEngine(object):
 
             print("Which weapon do you choose to draw?")
 
-            wpn_choice = ('>>> ')
+            wpn_choice = input('>>> ')
 
+            # This try/except isn't working - it raises the AttributeError
             try:
                 player.current_weapon = wpn_choice
                 plyr_wpn = player.active_weapon(player.current_weapon)
 
-            except NameError:
+            except AttributeError:
                 print(f"You fumble, looking for a {wpn_choice}")
                 print("where there is none.")
 
@@ -46,8 +49,22 @@ class CombatEngine(object):
                 self.attack(player, opponent, plyr_wpn)
 
 
-    def combat(self, player, opponent, plyr_wpn, opp_wpn):
+    def combat(self, player, opponent):
+
+        plyr_wpn = player.active_weapon(player.current_weapon)
+
+        print(f"Your weapon is a {player.current_weapon}")
+        for attr, value in plyr_wpn.__dict__.items():
+            print(attr + ': ' + str(value))
+
+        opp_wpn = opponent.active_weapon(opponent.current_weapon)
+
+        print(f"Your foe's weapon is a {opponent.current_weapon}")
+        for attr, value in opp_wpn.__dict__.items():
+            print(attr + ': ' + str(value))
+
         while player.vitality > 0 and opponent.vitality > 0:
+
             print(f"Your weapon is the {plyr_wpn}")
             print("What do you want to do?")
             print("\t1. Strike your foe")
